@@ -18,6 +18,8 @@ class TipViewController : UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
 
+    let numberFormatter = NSNumberFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,15 +47,45 @@ extension TipViewController {
     }
 
     func amountTextFieldValueChanged(sender: AnyObject) {
-        totalLabel.text = amountTextField.text
+        calculateResult()
+    }
+
+
+}
+
+extension TipViewController {
+    func calculateResult() {
+        guard let amountString = amountTextField.text where amountString.characters.count > 0,
+            let amount = numberFormatter.numberFromString(amountString)?.floatValue else {
+                return
+        }
+
+        let tip = determineTip()
+        let tipAmount = amount * tip
+        let total = amount + tipAmount
+
+        tipLabel.text = numberFormatter.stringFromNumber(NSNumber(float: tipAmount))
+        totalLabel.text = numberFormatter.stringFromNumber(NSNumber(float: total))
+    }
+
+    func determineTip() -> Float {
+        switch tipSegmentedControl.selectedSegmentIndex {
+        case 0:
+            return 0.1
+        case 1:
+            return 0.15
+        case 2:
+            return 0.2
+        default:
+            return 0
+        }
     }
 }
 
 extension TipViewController {
     @IBAction func tipSegmentedControlValueChanged(sender: UISegmentedControl) {
-        
+        calculateResult()
     }
-    
 }
 
 extension TipViewController : UITextFieldDelegate {
