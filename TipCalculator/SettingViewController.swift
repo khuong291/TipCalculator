@@ -16,3 +16,9 @@ class SettingViewController : UIViewController {
         title = "Settings"
     }
 }
+
+extension SettingViewController {
+    @IBAction func backButtonTouched(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+}

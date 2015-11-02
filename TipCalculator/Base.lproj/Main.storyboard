@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Tip Calculator-->
@@ -139,7 +140,24 @@
                     <view key="view" contentMode="scaleToFill" id="obS-sa-a9Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpt-is-EiM">
+                                <rect key="frame" x="31" y="28" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="C9P-bf-Kub"/>
+                                    <constraint firstAttribute="width" secondItem="rpt-is-EiM" secondAttribute="height" multiplier="1:1" id="NHn-Yi-2sE"/>
+                                </constraints>
+                                <state key="normal" image="Back-100"/>
+                                <connections>
+                                    <action selector="backButtonTouched:" destination="pys-8q-Osy" eventType="touchUpInside" id="YDp-80-U6h"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rpt-is-EiM" firstAttribute="top" secondItem="obS-sa-a9Z" secondAttribute="top" constant="28" id="NJV-Cf-tZn"/>
+                            <constraint firstItem="rpt-is-EiM" firstAttribute="leading" secondItem="obS-sa-a9Z" secondAttribute="leading" constant="31" id="i0z-JT-zfp"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
@@ -167,6 +185,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Back-100" width="100" height="100"/>
         <image name="Settings-32" width="32" height="32"/>
     </resources>
 </document>

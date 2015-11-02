@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import BubbleTransition
 
 class TipViewController : UIViewController {
     @IBOutlet weak var amountContainerView: UIView!
@@ -18,6 +19,7 @@ class TipViewController : UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
 
+    let transition = BubbleTransition()
     let numberFormatter = NSNumberFormatter()
 
     override func viewDidLoad() {
@@ -97,6 +99,25 @@ extension TipViewController {
     @IBAction func settingButtonTouched(sender: UIBarButtonItem) {
         let settingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingViewController")
 
-        navigationController?.pushViewController(settingViewController, animated: true)
+        settingViewController.transitioningDelegate = self
+        settingViewController.modalPresentationStyle = .Custom
+
+        presentViewController(settingViewController, animated: true, completion: nil)
+    }
+}
+
+extension TipViewController : UIViewControllerTransitioningDelegate {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Present
+        transition.startingPoint = view.center
+        transition.bubbleColor = UIColor.yellowColor()
+        return transition
+    }
+
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Dismiss
+        transition.startingPoint = view.center
+        transition.bubbleColor = UIColor.yellowColor()
+        return transition
     }
 }
