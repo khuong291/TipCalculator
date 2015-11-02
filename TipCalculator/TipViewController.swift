@@ -28,6 +28,12 @@ class TipViewController : UIViewController {
         setupGestureRecognizer()
         setupAmountTextField()
     }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        amountTextField.becomeFirstResponder()
+    }
 }
 
 extension TipViewController {
