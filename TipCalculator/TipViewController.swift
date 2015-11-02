@@ -49,8 +49,6 @@ extension TipViewController {
     func amountTextFieldValueChanged(sender: AnyObject) {
         calculateResult()
     }
-
-
 }
 
 extension TipViewController {
@@ -92,5 +90,13 @@ extension TipViewController : UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension TipViewController {
+    @IBAction func settingButtonTouched(sender: UIBarButtonItem) {
+        let settingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingViewController")
+
+        navigationController?.pushViewController(settingViewController, animated: true)
     }
 }

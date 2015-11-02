@@ -8,7 +8,7 @@
         <!--Tip Calculator-->
         <scene sceneID="lCs-aw-wg8">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="qLi-Tf-64h" customClass="TipViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TipViewController" automaticallyAdjustsScrollViewInsets="NO" id="qLi-Tf-64h" customClass="TipViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kLe-F6-8Pd"/>
                         <viewControllerLayoutGuide type="bottom" id="YQD-Am-8s3"/>
@@ -108,7 +108,11 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="udl-z1-48Y">
-                        <barButtonItem key="rightBarButtonItem" image="Settings-32" id="HZ8-hu-b7p"/>
+                        <barButtonItem key="rightBarButtonItem" image="Settings-32" id="HZ8-hu-b7p">
+                            <connections>
+                                <action selector="settingButtonTouched:" destination="qLi-Tf-64h" id="o6q-kr-H35"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -127,7 +131,7 @@
         <!--Setting View Controller-->
         <scene sceneID="jgm-Kt-dGt">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="pys-8q-Osy" customClass="SettingViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" automaticallyAdjustsScrollViewInsets="NO" id="pys-8q-Osy" customClass="SettingViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YX8-24-qMj"/>
                         <viewControllerLayoutGuide type="bottom" id="I00-hi-4va"/>
