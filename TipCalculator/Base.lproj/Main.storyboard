@@ -152,14 +152,39 @@
                                     <action selector="backButtonTouched:" destination="pys-8q-Osy" eventType="touchUpInside" id="YDp-80-U6h"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default tip percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9Q-aG-F0q">
+                                <rect key="frame" x="31" y="103" width="171" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QY4-iB-YTy">
+                                <rect key="frame" x="20" y="138" width="560" height="29"/>
+                                <segments>
+                                    <segment title="10%"/>
+                                    <segment title="15%"/>
+                                    <segment title="20%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tipSegmentedControlValueChanged:" destination="qLi-Tf-64h" eventType="valueChanged" id="ddk-Vh-vPv"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QY4-iB-YTy" secondAttribute="trailing" constant="20" id="Fuk-RF-9ok"/>
+                            <constraint firstItem="QY4-iB-YTy" firstAttribute="top" secondItem="O9Q-aG-F0q" secondAttribute="bottom" constant="14" id="H0L-ma-0AT"/>
+                            <constraint firstItem="O9Q-aG-F0q" firstAttribute="leading" secondItem="obS-sa-a9Z" secondAttribute="leading" constant="31" id="Mw3-1J-xmW"/>
                             <constraint firstItem="rpt-is-EiM" firstAttribute="top" secondItem="obS-sa-a9Z" secondAttribute="top" constant="28" id="NJV-Cf-tZn"/>
+                            <constraint firstItem="O9Q-aG-F0q" firstAttribute="top" secondItem="obS-sa-a9Z" secondAttribute="top" constant="103" id="TCu-rg-bxN"/>
+                            <constraint firstItem="QY4-iB-YTy" firstAttribute="leading" secondItem="obS-sa-a9Z" secondAttribute="leading" constant="20" id="b01-lf-4c0"/>
                             <constraint firstItem="rpt-is-EiM" firstAttribute="leading" secondItem="obS-sa-a9Z" secondAttribute="leading" constant="31" id="i0z-JT-zfp"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="tipSegmentedControl" destination="QY4-iB-YTy" id="4vM-0v-hdS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YBJ-56-eTY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

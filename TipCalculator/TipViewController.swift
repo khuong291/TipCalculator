@@ -60,25 +60,21 @@ extension TipViewController {
                 return
         }
 
-        let tip = determineTip()
-        let tipAmount = amount * tip
+        let tipPercentage = determineTip().tipPercentage()
+        let tipAmount = amount * tipPercentage
         let total = amount + tipAmount
 
         tipLabel.text = numberFormatter.stringFromNumber(NSNumber(float: tipAmount))
         totalLabel.text = numberFormatter.stringFromNumber(NSNumber(float: total))
     }
 
-    func determineTip() -> Float {
-        switch tipSegmentedControl.selectedSegmentIndex {
-        case 0:
-            return 0.1
-        case 1:
-            return 0.15
-        case 2:
-            return 0.2
-        default:
-            return 0
-        }
+    func determineTip() -> Tip {
+        return Tip(rawValue: tipSegmentedControl.selectedSegmentIndex) ?? .Low
+    }
+
+    func updateTip(tip: Tip) {
+        tipSegmentedControl.selectedSegmentIndex = tip.rawValue
+        calculateResult()
     }
 }
 
@@ -97,10 +93,19 @@ extension TipViewController : UITextFieldDelegate {
 
 extension TipViewController {
     @IBAction func settingButtonTouched(sender: UIBarButtonItem) {
-        let settingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingViewController")
+        guard let settingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingViewController") as? SettingViewController
+            else {
+            return
+        }
 
         settingViewController.transitioningDelegate = self
         settingViewController.modalPresentationStyle = .Custom
+
+        settingViewController.tip = determineTip()
+
+        settingViewController.callback = { [weak self] tip in
+            self?.updateTip(tip)
+        }
 
         presentViewController(settingViewController, animated: true, completion: nil)
     }
