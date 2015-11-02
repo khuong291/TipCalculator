@@ -2,7 +2,7 @@
 //  TipCalculatorTests.swift
 //  TipCalculatorTests
 //
-//  Created by Khoa Pham on 11/2/15.
+//  Created by Khuong Pham on 11/2/15.
 //  Copyright © 2015 Fantageek. All rights reserved.
 //
 
