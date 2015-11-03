@@ -27,7 +27,7 @@
                                             <constraint firstAttribute="height" constant="50" id="SVd-3h-8H3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="qLi-Tf-64h" id="BLQ-aE-lxU"/>
                                         </connections>
