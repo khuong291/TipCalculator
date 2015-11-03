@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-TipCalculator/BubbleTransition.framework"
   install_framework "Pods-TipCalculator/ChameleonFramework.framework"
+  install_framework "Pods-TipCalculator/FlagKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TipCalculator/BubbleTransition.framework"
   install_framework "Pods-TipCalculator/ChameleonFramework.framework"
+  install_framework "Pods-TipCalculator/FlagKit.framework"
 fi

@@ -4,6 +4,7 @@ use_frameworks!
 target 'TipCalculator' do
 	pod 'ChameleonFramework', '~> 2.0'
 	pod 'BubbleTransition', '~> 1.0'
+    pod 'FlagKit', '~> 1.0'
 end
 
 target 'TipCalculatorTests' do

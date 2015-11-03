@@ -3,13 +3,16 @@ PODS:
   - ChameleonFramework (2.0.4):
     - ChameleonFramework/Default (= 2.0.4)
   - ChameleonFramework/Default (2.0.4)
+  - FlagKit (1.0.5)
 
 DEPENDENCIES:
   - BubbleTransition (~> 1.0)
   - ChameleonFramework (~> 2.0)
+  - FlagKit (~> 1.0)
 
 SPEC CHECKSUMS:
   BubbleTransition: 76d5e306dbda0f622260ea7d082c971d976422ab
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  FlagKit: e102a010e564e75f7863423b97f40fb32f0e24ee
 
 COCOAPODS: 0.39.0
