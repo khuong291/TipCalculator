@@ -21,7 +21,14 @@ class TipViewController : UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
 
     let transition = BubbleTransition()
+
     let numberFormatter = NSNumberFormatter()
+    let resultNumberFormatter: NSNumberFormatter = {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+
+        return formatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +41,8 @@ class TipViewController : UIViewController {
         // Persistency
         loadTip()
         saveTipIfNeeded()
+
+        calculateResult()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -76,8 +85,8 @@ extension TipViewController {
         let tipAmount = amount * tipPercentage
         let total = amount + tipAmount
 
-        tipLabel.text = numberFormatter.stringFromNumber(NSNumber(float: tipAmount))
-        totalLabel.text = numberFormatter.stringFromNumber(NSNumber(float: total))
+        tipLabel.text = resultNumberFormatter.stringFromNumber(NSNumber(float: tipAmount))
+        totalLabel.text = resultNumberFormatter.stringFromNumber(NSNumber(float: total))
     }
 
     func determineTip() -> Tip {
