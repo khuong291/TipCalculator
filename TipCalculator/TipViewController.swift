@@ -62,7 +62,7 @@ extension TipViewController {
     }
 
     func amountTextFieldValueChanged(sender: AnyObject) {
-        calculateResult()
+
     }
 }
 
@@ -72,8 +72,6 @@ extension TipViewController {
             let amount = numberFormatter.numberFromString(amountString)?.floatValue else {
                 return
         }
-
-        updateBackground()
 
         let tipPercentage = determineTip().tipPercentage()
         let tipAmount = amount * tipPercentage
@@ -117,6 +115,14 @@ extension TipViewController {
 extension TipViewController : UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+
+        updateBackground()
+        calculateResult()
+        
         return true
     }
 }
