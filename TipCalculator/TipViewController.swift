@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import BubbleTransition
 import ChameleonFramework
+import FlagKit
 
 class TipViewController : UIViewController {
     @IBOutlet weak var amountContainerView: UIView!
@@ -19,6 +20,7 @@ class TipViewController : UIViewController {
 
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var flagImageView: UIImageView!
 
     let transition = BubbleTransition()
 
@@ -48,7 +50,7 @@ class TipViewController : UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        updateCurrencySymbol()
+        updateLocale()
         amountTextField.becomeFirstResponder()
     }
 }
@@ -112,6 +114,16 @@ extension TipViewController {
             amountContainerView.backgroundColor = UIColor.flatYellowColor()
         }
 
+    }
+
+    func updateLocale() {
+        updateCurrencySymbol()
+        updateFlag()
+    }
+
+    func updateFlag() {
+        let image = UIImage(flagImageWithCountryCode: NSLocale.autoupdatingCurrentLocale().objectForKey(NSLocaleCountryCode) as! String)
+        flagImageView.image = image
     }
 
     func updateCurrencySymbol() {

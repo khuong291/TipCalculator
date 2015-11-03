@@ -33,7 +33,7 @@
                                         </connections>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-2X-aFc">
-                                        <rect key="frame" x="10" y="102" width="580" height="29"/>
+                                        <rect key="frame" x="70" y="102" width="520" height="29"/>
                                         <segments>
                                             <segment title="10%"/>
                                             <segment title="15%"/>
@@ -43,16 +43,25 @@
                                             <action selector="tipSegmentedControlValueChanged:" destination="qLi-Tf-64h" eventType="valueChanged" id="dJ1-S2-d6Y"/>
                                         </connections>
                                     </segmentedControl>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-DB-MgQ">
+                                        <rect key="frame" x="10" y="100" width="50" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="KLf-DB-MgQ" secondAttribute="height" multiplier="1.5:1" id="cFG-9N-lh1"/>
+                                            <constraint firstAttribute="width" constant="50" id="yzu-Tk-YeG"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80055838639999999" green="1" blue="0.95196315379999996" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ceP-2X-aFc" secondAttribute="trailing" constant="10" id="DXB-GC-A4N"/>
-                                    <constraint firstItem="ceP-2X-aFc" firstAttribute="leading" secondItem="HgS-IT-fp6" secondAttribute="leading" constant="10" id="KOI-Zl-rDo"/>
                                     <constraint firstAttribute="bottom" secondItem="ceP-2X-aFc" secondAttribute="bottom" constant="20" id="UA4-N8-Jjy"/>
+                                    <constraint firstItem="ceP-2X-aFc" firstAttribute="leading" secondItem="KLf-DB-MgQ" secondAttribute="trailing" constant="10" id="bNM-RU-iaf"/>
                                     <constraint firstAttribute="trailing" secondItem="Qvo-Fo-BJc" secondAttribute="trailing" constant="10" id="dc3-6t-koh"/>
                                     <constraint firstAttribute="height" constant="150" id="ig7-pA-GzE"/>
                                     <constraint firstItem="Qvo-Fo-BJc" firstAttribute="leading" secondItem="HgS-IT-fp6" secondAttribute="leading" constant="10" id="p82-TM-Zjq"/>
+                                    <constraint firstItem="KLf-DB-MgQ" firstAttribute="bottom" secondItem="ceP-2X-aFc" secondAttribute="bottom" constant="3" id="rIm-2n-Nco"/>
                                     <constraint firstItem="Qvo-Fo-BJc" firstAttribute="top" secondItem="HgS-IT-fp6" secondAttribute="top" constant="20" id="xod-gD-dzf"/>
+                                    <constraint firstItem="KLf-DB-MgQ" firstAttribute="leading" secondItem="HgS-IT-fp6" secondAttribute="leading" constant="10" id="zRl-Dk-OVq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-le-mUu" userLabel="Result">
@@ -121,6 +130,7 @@
                     <connections>
                         <outlet property="amountContainerView" destination="HgS-IT-fp6" id="1Xf-SF-XBj"/>
                         <outlet property="amountTextField" destination="Qvo-Fo-BJc" id="gaK-gn-CvB"/>
+                        <outlet property="flagImageView" destination="KLf-DB-MgQ" id="Ueh-Xy-dck"/>
                         <outlet property="resultContainerView" destination="8ki-le-mUu" id="iMJ-U1-tcL"/>
                         <outlet property="tipLabel" destination="4hK-dh-PKK" id="l6Q-dJ-Clq"/>
                         <outlet property="tipSegmentedControl" destination="ceP-2X-aFc" id="Jbd-Bp-JnL"/>
