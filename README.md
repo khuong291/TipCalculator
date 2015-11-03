@@ -39,6 +39,6 @@ Dependencies
 
 Demo
 --
-![Demo](demo.gif)
+![Demo](Demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
