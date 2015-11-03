@@ -27,6 +27,10 @@ class TipViewController : UIViewController {
 
         setupGestureRecognizer()
         setupAmountTextField()
+
+        // Persistency
+        loadTip()
+        saveTipIfNeeded()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -130,5 +134,21 @@ extension TipViewController : UIViewControllerTransitioningDelegate {
         transition.startingPoint = view.center
         transition.bubbleColor = UIColor.yellowColor()
         return transition
+    }
+}
+
+extension TipViewController {
+    func loadTip() {
+        let tip = DataManager.loadTip()
+        tipSegmentedControl.selectedSegmentIndex = tip.rawValue
+    }
+
+    func saveTipIfNeeded() {
+        NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication(),
+            queue: NSOperationQueue.mainQueue()) { [weak self] note in
+                if let tip = self?.determineTip() {
+                    DataManager.saveTip(tip)
+                }
+        }
     }
 }
