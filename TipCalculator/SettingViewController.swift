@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ChameleonFramework
 
 class SettingViewController : UIViewController {
     var tip: Tip!
@@ -21,6 +22,7 @@ class SettingViewController : UIViewController {
 
         title = "Settings"
         tipSegmentedControl.selectedSegmentIndex = tip.rawValue
+        view.backgroundColor = UIColor.flatYellowColor()
     }
 }
 

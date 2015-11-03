@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import BubbleTransition
+import ChameleonFramework
 
 class TipViewController : UIViewController {
     @IBOutlet weak var amountContainerView: UIView!
@@ -27,6 +28,8 @@ class TipViewController : UIViewController {
 
         setupGestureRecognizer()
         setupAmountTextField()
+
+        updateBackground()
 
         // Persistency
         loadTip()
@@ -70,6 +73,8 @@ extension TipViewController {
                 return
         }
 
+        updateBackground()
+
         let tipPercentage = determineTip().tipPercentage()
         let tipAmount = amount * tipPercentage
         let total = amount + tipAmount
@@ -85,6 +90,21 @@ extension TipViewController {
     func updateTip(tip: Tip) {
         tipSegmentedControl.selectedSegmentIndex = tip.rawValue
         calculateResult()
+    }
+
+    func updateBackground() {
+        resultContainerView.backgroundColor = UIColor.flatLimeColor()
+
+        guard let amountString = amountTextField.text else {
+            return
+        }
+
+        if amountString.characters.count > 0 {
+            amountContainerView.backgroundColor = UIColor.flatGreenColor()
+        } else {
+            amountContainerView.backgroundColor = UIColor.flatYellowColor()
+        }
+
     }
 }
 
@@ -125,14 +145,14 @@ extension TipViewController : UIViewControllerTransitioningDelegate {
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .Present
         transition.startingPoint = view.center
-        transition.bubbleColor = UIColor.yellowColor()
+        transition.bubbleColor = UIColor.flatYellowColor()
         return transition
     }
 
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .Dismiss
         transition.startingPoint = view.center
-        transition.bubbleColor = UIColor.yellowColor()
+        transition.bubbleColor = UIColor.flatYellowColor()
         return transition
     }
 }
