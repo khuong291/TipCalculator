@@ -48,6 +48,7 @@ class TipViewController : UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+        updateCurrencySymbol()
         amountTextField.becomeFirstResponder()
     }
 }
@@ -111,6 +112,19 @@ extension TipViewController {
             amountContainerView.backgroundColor = UIColor.flatYellowColor()
         }
 
+    }
+
+    func updateCurrencySymbol() {
+        let locale = NSLocale.currentLocale()
+
+        if let currencyCode = locale.objectForKey(NSLocaleCurrencyCode),
+            let currencySymbol = locale.displayNameForKey(NSLocaleCurrencySymbol,
+                value: currencyCode) {
+
+            amountTextField.placeholder = currencySymbol
+        } else {
+            amountTextField.placeholder = "$"
+        }
     }
 }
 
